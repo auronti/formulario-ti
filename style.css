@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0d6efd, #063970);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+/* Container principal */
+.container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #063970;
+}
+
+/* Campo */
+.field {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+/* Input */
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 16px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px; /* IMPORTANTE p/ mobile */
+    outline: none;
+    background: #fff;
+}
+
+/* Label flutuante */
+.field label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #777;
+    font-size: 14px;
+    pointer-events: none;
+    background: #fff;
+    padding: 0 6px;
+    transition: 0.3s ease;
+}
+
+/* Quando foca ou tem valor */
+.field input:focus + label,
+.field input:valid + label,
+.field textarea:focus + label,
+.field textarea:valid + label,
+.field select:focus + label,
+.field select:valid + label {
+    top: -8px;
+    font-size: 12px;
+    color: #0d6efd;
+}
+
+/* Textarea */
+.field textarea {
+    resize: none;
+    min-height: 90px;
+}
+
+/* Botão */
+button {
+    width: 100%;
+    padding: 16px;
+    background: #0d6efd;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #084298;
+}
+
+/* Ajustes p/ telas maiores (desktop) */
+@media (min-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    .container {
+        max-width: 480px;
+    }
+}

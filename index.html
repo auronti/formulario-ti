@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppChamadosTI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<script>
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const dados = {
+        data: document.getElementById("data").value,
+        setor: document.getElementById("setor").value,
+        equipamento: document.getElementById("equipamento").value,
+        tombo: document.getElementById("tombo").value,
+        tipo: document.getElementById("tipo").value,
+        descricao: document.getElementById("descricao").value
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbyjHmPZa7A30L-uAzkHyDrQ97VF6cgoasUujwqhZ3IkKuQalbv124xGElH1izF-ExDSQA/exec", {
+        method: "POST",
+        body: JSON.stringify(dados),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => res.json())
+    .then(() => {
+        alert("Atendimento salvo com sucesso!");
+        form.reset();
+    })
+    .catch(() => {
+        alert("Erro ao salvar. Verifique a conexão.");
+    });
+});
+</script>
+
+
+<body>
+
+<div class="container">
+    <h2>Registro de Atendimento</h2>
+
+    <form>
+        <div class="field">
+            <input type="date" id="data" required>
+            <label for="data">Data do atendimento</label>
+        </div>
+
+        <div class="field">
+            <input type="text" id="setor" required>
+            <label for="setor">Setor</label>
+        </div>
+
+        <div class="field">
+            <input type="text" id="equipamento" required>
+            <label for="equipamento">Equipamento</label>
+        </div>
+
+        <div class="field">
+            <input type="text" id="tombo">
+            <label for="tombo">Tombo</label>
+        </div>
+
+        <div class="field">
+            <select id="tipo" required>
+                <option value="" disabled selected></option>
+                <option>Manutenção Preventiva</option>
+                <option>Manutenção Corretiva</option>
+                <option>Limpeza</option>
+                <option>Verificação de Rede</option>
+                <option>Suporte ao Usuário</option>
+                <option>Instalação de Programas</option>
+            </select>
+            <label for="tipo">Tipo de atendimento</label>
+        </div>
+
+        <div class="field">
+            <textarea id="descricao" required></textarea>
+            <label for="descricao">Descrição</label>
+        </div>
+
+        <button type="submit">Salvar Atendimento</button>
+    </form>
+</div>
+
+</body>
+</html>
